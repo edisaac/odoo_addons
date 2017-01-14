@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_attendee_tree">
+            <field name="name">openacademic attendee tree</field>
+            <field name="model">openacademy.attendee</field>
+            <field name="arch" type="xml">
+                <tree string="attendee" editable="bottom">
+                    <field name="name"/>
+                    <field name="session_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="attendee_action" model="ir.actions.act_window">
+            <field name="name">attendee</field>
+            <field name="res_model">openacademy.attendee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</openerp>

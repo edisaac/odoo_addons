@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_sesion_tree">
+            <field name="name">openacademy session tree</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <tree string="Session">
+                    <field name="name"/>
+                    <field name="seats"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_sesion_form">
+            <field name="name">openacademy session form</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <form string="Session">
+                    <group col="4">
+                        <field name="name">Nombre</field>
+                        <field name="course_id">cursos</field>
+                        <field name="seats">sitios</field>
+                        <field name="duration">duracion</field>
+                        <field name="star_date">fecha de inicio</field>
+                    </group>
+                    <separetor string="Attendees"/>
+                    <field name="attendee_ids">
+                        <tree string="attendees :D" editable="top">
+                            <field name="name">Nombre</field>
+                        </tree>
+                    </field>
+                </form>
+            </field>
+        </record>
+
+        <record id="session_action" model="ir.actions.act_window">
+            <field name="name">session</field>
+            <field name="res_model">openacademy.session</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</openerp>

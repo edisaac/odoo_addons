@@ -35,6 +35,8 @@ Modulo de pruebas
     'depends': ['base'],
     'data': [
         "views/course.xml",
+        "views/session.xml",
+        "views/attendee.xml",
         "menu_item.xml",
     ],
     'demo': [
