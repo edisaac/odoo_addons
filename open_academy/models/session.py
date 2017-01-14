@@ -1,4 +1,4 @@
-from openerp import models, fields, api
+from openerp import models, fields, api, exceptions
 
 
 class OpenAcademySession(models.Model):
@@ -33,3 +33,16 @@ class OpenAcademySession(models.Model):
                               'message': 'the seats must be more then 0'}
 
         return res
+
+    @api.one
+    @api.constrains('instructor_id', 'attendee_ids')
+    def _check_instructor(self):
+        for attendee in self.attendee_ids:
+            if attendee.partner_id == self.instructor_id:
+                raise exceptions.ValidationError("The Partner and instructor mus be different")
+
+    @api.one
+    @api.constrains('seats', 'attendee_ids')
+    def _check_attendees(self):
+        if self.seats < len(self.attendee_ids):
+            raise exceptions.ValidationError("Can not be more attendees than seats")
