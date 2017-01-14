@@ -37,6 +37,7 @@ Modulo de pruebas
         "views/course.xml",
         "views/session.xml",
         "views/attendee.xml",
+        "views/partner.xml",
         "menu_item.xml",
     ],
     'demo': [

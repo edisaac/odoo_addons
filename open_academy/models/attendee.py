@@ -6,4 +6,4 @@ class OpenAcademyAttendee(models.Model):
 
     name = fields.Char("Name", size=64, requiered=True)
     session_id = fields.Many2one("openacademy.session", string="Session")
-    partner_id = fields.Many2one("res.partner", string='Partner') 
+    partner_id = fields.Many2one("res.partner", string='Partner')

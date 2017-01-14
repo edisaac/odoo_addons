@@ -7,5 +7,7 @@
         <menuitem name="course" id="course_menu" parent="open_menu" action="course_action"/>
         <menuitem name="session" id="session_menu" parent="open_menu" action="session_action"/>
         <menuitem name="attendee" id="attendee_menu" parent="open_menu" action="attendee_action"/>
+        <menuitem name="partner" id="partner_menu" parent="open_menu"  action="partner_action"/>
+
     </data>
 </openerp>
