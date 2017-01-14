@@ -8,6 +8,7 @@
                 <tree string="Session">
                     <field name="name"/>
                     <field name="seats"/>
+                    <field name="remaining_seats" widget="progressbar"/>
                 </tree>
             </field>
         </record>
@@ -24,6 +25,7 @@
                         <field name="duration"/>
                         <field name="star_date"/>
                         <field name="instructor_id"/>
+                        <field name="remaining_seats" widget="progressbar"/>
                     </group>
                     <separetor string="Attendees"/>
                     <field name="attendee_ids">
