@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record model="res.partner.category" id="instructores_data">
+            <field name="name">Instructores</field>
+        </record>
+
+        <record model="res.partner.category" id="instructor_1_data">
+            <field name="name">Instructor 1</field>
+            <field name="parent_id" ref="instructores_data"/>
+        </record>
+
+        <record model="res.partner.category" id="instructor_2_data">
+            <field name="name">Instructor 2</field>
+            <field name="parent_id" ref="instructores_data"/>
+        </record>
+
+    </data>
+</openerp>

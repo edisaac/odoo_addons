@@ -18,16 +18,18 @@
             <field name="arch" type="xml">
                 <form string="Session">
                     <group col="4">
-                        <field name="name">Nombre</field>
-                        <field name="course_id">cursos</field>
-                        <field name="seats">sitios</field>
-                        <field name="duration">duracion</field>
-                        <field name="star_date">fecha de inicio</field>
+                        <field name="name"/>
+                        <field name="course_id"/>
+                        <field name="seats"/>
+                        <field name="duration"/>
+                        <field name="star_date"/>
+                        <field name="instructor_id"/>
                     </group>
                     <separetor string="Attendees"/>
                     <field name="attendee_ids">
-                        <tree string="attendees :D" editable="top">
-                            <field name="name">Nombre</field>
+                        <tree string="attendees" editable="top">
+                            <field name="name"/>
+
                         </tree>
                     </field>
                 </form>

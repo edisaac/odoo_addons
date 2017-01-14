@@ -8,6 +8,7 @@
                 <tree string="attendee" editable="bottom">
                     <field name="name"/>
                     <field name="session_id"/>
+                    <field name="partner_id"/>
                 </tree>
             </field>
         </record>
