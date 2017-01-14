@@ -20,6 +20,7 @@
                 <form string="Courses">
                     <group>
                         <field name="name"/>
+                        <field name="responsible_id"/>
                     </group>
                     <notebook>
                         <page string="Description">
