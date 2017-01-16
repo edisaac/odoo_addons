@@ -13,4 +13,11 @@ class OpenAcademyCourse(models.Model):
                          'name and description must be different'),
                         ('name_unique', 'unique (name)', 'name must be unique')
                         ]
+
+    #sobrescribiendo el metodo copy
+    @api.one
+    def copy(self, default=None):
+        default['name']=self.name + '(copy)'
+        return super(OpenAcademyCourse, self).copy(default)
+
     #python-chart pydot pyparsing pyd usb>=1.0.0b1
