@@ -7,7 +7,7 @@ class OpenAcademySession(models.Model):
     name = fields.Char("Name", size=64, requiered=True)
     seats = fields.Integer("Seats")
     duration = fields.Float("Duration")
-    star_date = fields.Date("Star_Date")
+    star_date = fields.Date("Star_Date",default=fields.Date.today)
     course_id = fields.Many2one("openacademy.course", string="Course")
     attendee_ids = fields.One2many("openacademy.attendee", 'session_id', string='attendees')
     instructor_id = fields.Many2one("res.partner", string='Instructor',
@@ -16,6 +16,7 @@ class OpenAcademySession(models.Model):
                                             ('category_id.name', 'in', ['Instructor 1', 'Instructor 2'])
                                             ])
     remaining_seats = fields.Float("Remaining Seats", compute='_remaining_seats')
+    active = fields.Boolean('Active', default = True)
 
     @api.one
     @api.depends('attendee_ids', 'seats')

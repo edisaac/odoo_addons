@@ -26,6 +26,7 @@
                         <field name="star_date"/>
                         <field name="instructor_id"/>
                         <field name="remaining_seats" widget="progressbar"/>
+                        <field name="active" />
                     </group>
                     <separetor string="Attendees"/>
                     <field name="attendee_ids">
