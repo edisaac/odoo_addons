@@ -23,10 +23,12 @@
                         <field name="course_id"/>
                         <field name="seats"/>
                         <field name="duration"/>
-                        <field name="star_date"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
                         <field name="instructor_id"/>
                         <field name="remaining_seats" widget="progressbar"/>
                         <field name="active" />
+                        <field name="attendee_count"/>
                     </group>
                     <separetor string="Attendees"/>
                     <field name="attendee_ids">

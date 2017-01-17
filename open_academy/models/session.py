@@ -1,4 +1,5 @@
 from openerp import models, fields, api, exceptions
+from datetime import timedelta
 
 
 class OpenAcademySession(models.Model):
@@ -7,7 +8,7 @@ class OpenAcademySession(models.Model):
     name = fields.Char("Name", size=64, requiered=True)
     seats = fields.Integer("Seats")
     duration = fields.Float("Duration")
-    star_date = fields.Date("Star_Date",default=fields.Date.today)
+    start_date = fields.Date("Star Date", default=fields.Date.today)
     course_id = fields.Many2one("openacademy.course", string="Course")
     attendee_ids = fields.One2many("openacademy.attendee", 'session_id', string='attendees')
     instructor_id = fields.Many2one("res.partner", string='Instructor',
@@ -16,7 +17,9 @@ class OpenAcademySession(models.Model):
                                             ('category_id.name', 'in', ['Instructor 1', 'Instructor 2'])
                                             ])
     remaining_seats = fields.Float("Remaining Seats", compute='_remaining_seats')
-    active = fields.Boolean('Active', default = True)
+    active = fields.Boolean('Active', default=True)
+    attendee_count = fields.Integer("Total attendees", compute='_attendee_count')
+    end_date = fields.Date("End Date", compute='_end_date', inverse='_set_end_date')
 
     @api.one
     @api.depends('attendee_ids', 'seats')
@@ -47,3 +50,22 @@ class OpenAcademySession(models.Model):
     def _check_attendees(self):
         if self.seats < len(self.attendee_ids):
             raise exceptions.ValidationError("Can not be more attendees than seats")
+
+    @api.one
+    @api.depends('attendee_ids')
+    def _attendee_count(self):
+        self.attendee_count = len(self.attendee_ids)
+
+    @api.one
+    @api.depends('start_date', 'duration')
+    def _end_date(self):
+        start_date = fields.Datetime.from_string(self.start_date)
+        duration = timedelta(days=self.duration - 1)
+        self.end_date = start_date + duration
+
+    @api.one
+    def _set_end_date(self):
+        start_date = fields.Datetime.from_string(self.start_date)
+        end_date = fields.Datetime.from_string(self.end_date)
+        duration = end_date - start_date
+        self.duration = duration.days + 1
