@@ -52,7 +52,7 @@
             </field>
         </record>
 
-        <record id="view_sesion_gantt" model="ir.ui.view">
+        <record id="view_session_gantt" model="ir.ui.view">
             <field name="name">open academy session gantt</field>
             <field name="model">openacademy.session</field>
             <field name="arch" type="xml">
@@ -62,11 +62,22 @@
             </field>
         </record>
 
+        <record id="view_session_graph" model="ir.ui.view">
+            <field name="name">open academy session graph</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <graph string="session graph" type="bar">
+                    <field name="course_id"/>
+                    <field name="attendee_count" operator="+" />
+                </graph>
+            </field>
+        </record>
+
         <record id="session_action" model="ir.actions.act_window">
             <field name="name">session</field>
             <field name="res_model">openacademy.session</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,gantt,form,calendar</field>
+            <field name="view_mode">tree,gantt,form,calendar,graph</field>
         </record>
     </data>
 </openerp>
