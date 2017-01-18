@@ -40,6 +40,8 @@ Modulo de pruebas
         "views/partner.xml",
         "data/category.xml",
         "data/workflow.xml",
+        "security/groups.xml",
+        "security/ir.model.access.csv",
         "menu_item.xml",
     ],
     'demo': [
