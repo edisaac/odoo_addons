@@ -22,6 +22,7 @@ class OpenAcademySession(models.Model):
     active = fields.Boolean(string='Active', default=True)
     attendee_count = fields.Integer(string="Total attendees", compute='_attendee_count', store=True)
     end_date = fields.Date(string="End Date", compute='_end_date', inverse='_set_end_date')
+    color = fields.Integer(string="Color")
 
     @api.one
     @api.depends('attendee_ids', 'seats')
