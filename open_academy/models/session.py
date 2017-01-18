@@ -24,6 +24,25 @@ class OpenAcademySession(models.Model):
     end_date = fields.Date(string="End Date", compute='_end_date', inverse='_set_end_date')
     color = fields.Integer(string="Color")
 
+    state = fields.Selection([('draft', 'Draft'),
+                              ('confirm', 'Confirm'),
+                              ('done', 'Done')],
+                             string='State', readonly=True, default='draft')
+
+    @api.one
+    def action_draft(self):
+        #for session in self:  # ejemplo de multi. pero no hay
+        #    session.state = 'draft'
+        self.state = 'draft'
+
+    @api.one
+    def action_confirm(self):
+        self.state = 'confirm'
+
+    @api.one
+    def action_done(self):
+        self.write({'state': 'done'})  # self.write permite cambiar varios valores
+
     @api.one
     @api.depends('attendee_ids', 'seats')
     def _remaining_seats(self):

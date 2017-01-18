@@ -19,25 +19,33 @@
             <field name="model">openacademy.session</field>
             <field name="arch" type="xml">
                 <form string="Session">
-                    <group col="4">
-                        <field name="name"/>
-                        <field name="course_id"/>
-                        <field name="seats"/>
-                        <field name="duration"/>
-                        <field name="start_date"/>
-                        <field name="end_date"/>
-                        <field name="instructor_id"/>
-                        <field name="remaining_seats" widget="progressbar"/>
-                        <field name="active" />
-                        <field name="attendee_count"/>
-                    </group>
-                    <separetor string="Attendees"/>
-                    <field name="attendee_ids">
-                        <tree string="attendees" editable="top">
+                     <header >
+                        <button string="Draft" type="object" name="action_draft" states="confirm,done"/>
+                        <button string="Confirm" type="object" name="action_confirm" states="draft"/>
+                        <button string="Done" type="object" name="action_done" states="confirm"/>
+                        <field name="state" widget="statusbar"></field>
+                     </header>
+                    <sheet>
+                        <group col="4">
                             <field name="name"/>
-                            <field name="partner_id"/>
-                        </tree>
-                    </field>
+                            <field name="course_id"/>
+                            <field name="seats"/>
+                            <field name="duration"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="instructor_id"/>
+                            <field name="remaining_seats" widget="progressbar"/>
+                            <field name="active" />
+                            <field name="attendee_count"/>
+                        </group>
+                        <separetor string="Attendees"/>
+                        <field name="attendee_ids">
+                            <tree string="attendees" editable="top">
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                            </tree>
+                        </field>
+                    </sheet>
                 </form>
             </field>
         </record>
@@ -93,6 +101,7 @@
                                             <li>
                                                 <a type="delete">Delete</a>
                                             </li>
+
                                             <li>
                                                 <ul class="oe_kanban_colorpicker" data-field="color"/>
                                             </li>
