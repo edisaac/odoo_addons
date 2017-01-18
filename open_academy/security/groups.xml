@@ -3,7 +3,7 @@
     <data>
 
         <record model="ir.module.category" id="open_academic_module">
-            <field name="name">OpenAcademic_Module</field>
+            <field name="name">Open Academy_Module</field>
         </record>
 
         <record model="res.groups" id="user_grupo">
@@ -17,6 +17,18 @@
             <field name="category_id" ref="open_academic_module" />
             <field name="implied_ids" eval="{(4,ref('user_grupo'))}"/>
              <!--opcion 4 vincula-->
+        </record>
+
+        <record model="ir.rule" id="manager_rulex">
+            <field name="name">pruebax</field>
+            <field name="model_id" ref="model_openacademy_course"/>
+            <field name="perm_read">0</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">1</field>
+            <field name="perm_unlink">1</field>
+            <field name="global">0</field>
+            <field name="domain_force">["|",("responsible_id","=",user.id),("responsible_id","=",False)]</field>
+            <field name="groups" eval="{(4,ref('user_grupo'))}"/>
         </record>
     </data>
 </openerp>

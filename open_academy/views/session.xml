@@ -40,7 +40,8 @@
                             <field name="end_date"/>
                             <field name="instructor_id"/>
                             <field name="remaining_seats" widget="progressbar"/>
-                            <field name="active" />
+                            <!-- el nombre del nombre de la carpeta . grupo -->
+                            <field name="active" groups="open_academy.manager_grupo"/>
                             <field name="attendee_count"/>
                         </group>
                         <separetor string="Attendees"/>
