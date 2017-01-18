@@ -5,10 +5,11 @@ from datetime import timedelta
 class OpenAcademySession(models.Model):
     _name = "openacademy.session"
 
-    name = fields.Char("Name", size=64, requiered=True)
-    seats = fields.Integer("Seats")
-    duration = fields.Float("Duration")
-    start_date = fields.Date("Star Date", default=fields.Date.today)
+    name = fields.Char(string="Name", size=64, requiered=True)
+    seats = fields.Integer(string="Seats")
+    duration = fields.Float(string="Duration")
+    start_date = fields.Date(string="Star Date", default=fields.Date.today)
+
     course_id = fields.Many2one("openacademy.course", string="Course")
     attendee_ids = fields.One2many("openacademy.attendee", 'session_id', string='attendees')
     instructor_id = fields.Many2one("res.partner", string='Instructor',
@@ -16,10 +17,11 @@ class OpenAcademySession(models.Model):
                                             ('is_instructor', '=', True),
                                             ('category_id.name', 'in', ['Instructor 1', 'Instructor 2'])
                                             ])
-    remaining_seats = fields.Float("Remaining Seats", compute='_remaining_seats')
-    active = fields.Boolean('Active', default=True)
-    attendee_count = fields.Integer("Total attendees", compute='_attendee_count')
-    end_date = fields.Date("End Date", compute='_end_date', inverse='_set_end_date')
+
+    remaining_seats = fields.Float(string="Remaining Seats", compute='_remaining_seats')
+    active = fields.Boolean(string='Active', default=True)
+    attendee_count = fields.Integer(string="Total attendees", compute='_attendee_count')
+    end_date = fields.Date(string="End Date", compute='_end_date', inverse='_set_end_date')
 
     @api.one
     @api.depends('attendee_ids', 'seats')

@@ -4,8 +4,8 @@ from openerp import models, fields, api
 class OpenAcademyCourse(models.Model):
     _name = "openacademy.course"
 
-    name = fields.Char("Name", size=32, required=True)
-    description = fields.Text("Description")
+    name = fields.Char(string="Name", size=32, required=True)
+    description = fields.Text(string="Description")
     session_ids = fields.One2many("openacademy.session", 'course_id', string='sessions')
     responsible_id = fields.Many2one("res.users", string='Responsible')
     _sql_constraints = [('name_description_ck',
