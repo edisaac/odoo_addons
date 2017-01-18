@@ -2,12 +2,19 @@
 <openerp>
     <data>
 
-        <menuitem name="Open Academy" id="root_menu"/>
+        <menuitem name="Open Academy" id="root_menu" action="open_board_session"/>
         <menuitem name="Open" id="open_menu" parent="root_menu"/>
         <menuitem name="course" id="course_menu" parent="open_menu" action="course_action"/>
         <menuitem name="session" id="session_menu" parent="open_menu" action="session_action"/>
         <menuitem name="attendee" id="attendee_menu" parent="open_menu" action="attendee_action"/>
         <menuitem name="partner" id="partner_menu" parent="open_menu"  action="partner_action"/>
 
+		<menuitem id="menu_dashboard" name="Dashboard" sequence="100" parent="root_menu"/>
+		<menuitem
+			name="Session Dashboard" parent="menu_dashboard"
+			action="open_board_session"
+			sequence="1"
+			id="menu_board_session" icon="terp-graph"
+			/>
     </data>
 </openerp>

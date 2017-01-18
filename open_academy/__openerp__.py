@@ -32,12 +32,13 @@ Modulo de pruebas
 
 """,
     'author': 'autor =isaac SA',
-    'depends': ['base'],
+    'depends': ['base', 'board'],
     'data': [
         "views/course.xml",
         "views/session.xml",
         "views/attendee.xml",
         "views/partner.xml",
+        "views/dashboard.xml",
         "data/category.xml",
         "data/workflow.xml",
         "security/groups.xml",
