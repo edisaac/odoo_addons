@@ -21,3 +21,15 @@ class OpenAcademyCourse(models.Model):
         return super(OpenAcademyCourse, self).copy(default)
 
     #python-chart pydot pyparsing pyd usb>=1.0.0b1
+
+    # sobrescribiendo el metodo name que muestra los datos de una lista
+    @api.multi
+    def name_get(self, default=None):
+        # res = super(OpenAcademicCourse, self).name_get()
+        res = []
+        for course in self:
+            t = (course.id, "%s %s" % (course.name, course.responsible_id
+                                       and "(%s)" % course.responsible_id.name or ""))
+            res.append(t)
+
+        return res
