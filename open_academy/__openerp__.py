@@ -38,7 +38,8 @@ Modulo de pruebas
         "views/session.xml",
         "views/attendee.xml",
         "views/partner.xml",
-        "data.xml",
+        "data/category.xml",
+        "data/workflow.xml",
         "menu_item.xml",
     ],
     'demo': [

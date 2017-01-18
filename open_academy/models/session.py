@@ -8,7 +8,7 @@ class OpenAcademySession(models.Model):
     name = fields.Char(string="Name", size=64, requiered=True)
     seats = fields.Integer(string="Seats")
     duration = fields.Float(string="Duration")
-    start_date = fields.Date(string="Star Date", default=fields.Date.today)
+    start_date = fields.Date(string="Star Date", default=fields.Date.today, states={'draft': [('readonly', False)]})
 
     course_id = fields.Many2one("openacademy.course", string="Course")
     attendee_ids = fields.One2many("openacademy.attendee", 'session_id', string='attendees')

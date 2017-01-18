@@ -10,6 +10,7 @@
                     <field name="seats"/>
                     <field name="duration"/>
                     <field name="remaining_seats" widget="progressbar"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -24,6 +25,10 @@
                         <button string="Confirm" type="object" name="action_confirm" states="draft"/>
                         <button string="Done" type="object" name="action_done" states="confirm"/>
                         <field name="state" widget="statusbar"></field>
+                        <button string="Draft_W" type="workflow" name="signal_draft"  />
+                        <button string="Confirm_W" type="workflow" name="signal_confirm"  />
+                        <button string="Done_W" type="workflow" name="signal_done"  />
+
                      </header>
                     <sheet>
                         <group col="4">
